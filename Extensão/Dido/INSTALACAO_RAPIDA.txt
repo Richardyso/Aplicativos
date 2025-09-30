@@ -1,0 +1,59 @@
+🗺️ DIDO - INSTRUÇÕES DE INSTALAÇÃO RÁPIDA
+===============================================
+
+✅ EXTENSÃO 100% GRATUITA E SEM LIMITAÇÕES!
+
+📋 COMO INSTALAR:
+
+1. Abra o Chrome ou Edge
+2. Digite na barra de endereços: chrome://extensions/
+3. Ative o "Modo do desenvolvedor" (canto superior direito)
+4. Clique em "Carregar sem compactação"
+5. Selecione a pasta "Dido" (onde está este arquivo)
+6. Clique em "Selecionar pasta"
+7. Pronto! A extensão estará instalada
+
+🎯 COMO USAR:
+
+1. Acesse Google Maps (maps.google.com) ou Bing Maps (bing.com/maps)
+2. Faça buscas por negócios (ex: "restaurantes em São Paulo")
+3. Navegue pelos resultados clicando nas listagens
+4. Os dados serão coletados automaticamente
+5. Clique no ícone 🗺️ na barra de ferramentas para ver os dados
+6. Use "Exportar Excel" para baixar uma planilha Excel (.xlsx)
+
+📊 DADOS COLETADOS:
+- Nome da empresa
+- Endereço completo
+- Telefone
+- Website
+- Avaliações e ratings
+- Categorias
+- Coordenadas geográficas
+- URLs das listagens
+
+⚠️ IMPORTANTE:
+- Funciona apenas em Google Maps e Bing Maps
+- Os dados são coletados automaticamente
+- Não há limitações de uso
+- 100% gratuito e sem bloqueios
+
+🔧 PROBLEMAS?
+- Verifique se o "Modo do desenvolvedor" está ativado
+- Recarregue a página de extensões
+- Verifique se todos os arquivos estão na pasta correta
+
+📁 ESTRUTURA NECESSÁRIA:
+Dido/
+├── manifest.json
+├── html/popup.html
+├── js/popup.js
+├── js/background.js
+├── js/content.js
+├── css/popup.css
+├── css/content.css
+├── icons/icon-128.png
+├── _locales/en/messages.json
+└── README.md
+
+🎉 DIVIRTA-SE EXTRAINDO LEADS!

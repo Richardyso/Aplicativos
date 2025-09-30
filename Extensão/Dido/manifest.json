@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "minimum_chrome_version": "88.0",
+  "manifest_version": 3,
+  "name": "Dido - Extrator de Leads de Mapas",
+  "description": "Extrator gratuito e ilimitado de dados de negócios do Google Maps e Bing Maps. Sem limitações!",
+  "default_locale": "en",
+  "permissions": [
+    "alarms",
+    "scripting",
+    "storage",
+    "unlimitedStorage",
+    "webRequest",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_icon": {
+      "128": "icons/icon-128.png"
+    },
+    "default_popup": "html/popup.html",
+    "default_title": "Dido - Extrator de Leads"
+  },
+  "icons": {
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "css": [
+        "css/content.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/icon-128.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#ffffff"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="Logo BRASRIO"
+                android:src="@mipmap/ic_launcher_foreground" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BRASRIO CAMPO GRANDE"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Orçamento Rápido"
+                    android:textSize="14sp"
+                    android:textColor="#ff6600" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Mensagem de boas-vindas -->
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bem-vindo ao Sistema de Orçamento!"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcule rapidamente os materiais necessários para sua obra!"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Seção Materiais -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Escolha o tipo de material"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Primeira linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/btnDrywall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Drywall"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/btnCimenticia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Placas Cimentícias"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <!-- Segunda linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/btnPVC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PVC"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/btnIsopor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Isopor"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <!-- Terceira linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/btnForroMineral"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Forro Mineral"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/btnForroBoreal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Forro Boreal"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <!-- Quarta linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/btnPainel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Divisória Eucatex"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/btnPiso"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pisos"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_primary"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Seção Indicações -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precisa de Indicação?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnInstaladores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Instaladores Credenciados"
+                android:textSize="14sp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/button_primary"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/btnFretes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fretes"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/button_primary"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

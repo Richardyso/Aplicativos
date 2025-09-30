@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="220dp"
+        android:text="Dorys Prime"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/mp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manutenção Preventiva" />
+
+    <Button
+        android:id="@+id/mc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manutenção Corretiva" />
+
+    <Button
+        android:id="@+id/obs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observação" />
+
+    <!-- Add more UI elements for the Pousada screen here -->
+
+</LinearLayout>
