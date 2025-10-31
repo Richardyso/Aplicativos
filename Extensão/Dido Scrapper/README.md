@@ -108,44 +108,12 @@ Dido/
 
 ## 🛠️ Desenvolvimento
 
-### Modificações Feitas
-- ❌ Removido sistema de licenciamento
-- ❌ Removido verificações de premium
-- ❌ Removido limitações de uso
-- ❌ Removido analytics e telemetria
-- ✅ Interface simplificada e funcional
-- ✅ Código limpo e comentado
-- ✅ Funcionalidade 100% gratuita
-
 ### Tecnologias
 - **Manifest V3** - Versão mais recente de extensões
 - **Chrome Extensions API** - Para funcionalidades do navegador
 - **JavaScript ES6+** - Código moderno
 - **CSS3** - Estilos responsivos
 
-## ⚠️ Avisos Legais
-
-- Esta extensão é para uso educacional e pessoal
-- Respeite os termos de uso dos sites visitados
-- Use os dados coletados de forma ética e legal
-- Não faça spam ou uso comercial abusivo
-
-## 🐛 Solução de Problemas
-
-### A extensão não aparece
-- Verifique se o "Modo do desenvolvedor" está ativado
-- Recarregue a página de extensões
-- Verifique se todos os arquivos estão na pasta correta
-
-### Não está coletando dados
-- Certifique-se de estar em páginas do Google Maps ou Bing Maps
-- Aguarde alguns segundos após navegar
-- Verifique se a extensão está ativada
-
-### Erro ao exportar dados
-- Verifique se há dados coletados (contador > 0)
-- Tente limpar os dados e coletar novamente
-- Verifique as permissões do navegador
 
 ## 📞 Suporte
 
@@ -166,5 +134,3 @@ Se encontrar problemas:
 ---
 
 **🗺️ Dido - Extraindo leads de mapas de forma gratuita e ilimitada!**
-
-*Versão baseada no PRESTo, mas 100% gratuita e sem limitações.*

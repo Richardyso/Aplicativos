@@ -1,0 +1,127 @@
+/* Content Script Styles */
+
+/* Botão flutuante */
+#bulk-sender-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+#bulk-sender-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
+}
+
+#bulk-sender-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Badge de contagem */
+#bulk-sender-btn .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #FF5252;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+  animation: bounce 1s infinite;
+}
+
+/* Animação de pulse */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(18, 140, 126, 0.6);
+  }
+}
+
+/* Animação de bounce para badge */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Sidebar */
+#bulk-sender-sidebar {
+  position: fixed;
+  top: 0;
+  right: -600px;
+  width: 600px;
+  height: 100vh;
+  border: none;
+  border-left: 1px solid #ddd;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 99999;
+  background: white;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#bulk-sender-sidebar.open {
+  right: 0;
+}
+
+/* Overlay quando sidebar está aberta */
+#bulk-sender-sidebar.open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #bulk-sender-sidebar {
+    width: 100vw;
+    right: -100vw;
+  }
+  
+  #bulk-sender-btn {
+    bottom: 20px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  #bulk-sender-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+

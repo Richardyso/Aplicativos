@@ -168,22 +168,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Converter objetos para array de dados e filtrar registros vazios
-            const dataArray = Object.values(records)
-                .filter(record => {
-                    // Filtrar registros que não têm dados úteis
-                    const hasName = record.name && record.name.trim().length > 0;
-                    const hasAddress = (record.fulladdr && record.fulladdr.trim().length > 0) || 
-                                      (record.address && record.address.trim().length > 0);
-                    const hasPhone = (record.phone_number && record.phone_number.trim().length > 0) || 
-                                   (record.phone && record.phone.trim().length > 0);
-                    const hasWebsite = (record.url && record.url.trim().length > 0) || 
-                                     (record.website && record.website.trim().length > 0);
-                    
-                    // Pelo menos nome ou endereço deve estar presente
-                    return hasName || hasAddress;
-                })
-                .map(record => {
+            // Remover duplicatas antes de exportar
+            const uniqueRecords = {};
+            const contentKeyMap = new Map();
+            
+            for (const [uuid, record] of Object.entries(records)) {
+                // Criar chave de conteúdo normalizada
+                const name = (record.name || '').toLowerCase().trim().replace(/\s+/g, ' ');
+                const address = ((record.fulladdr || record.address || '').toLowerCase().trim().replace(/\s+/g, ' '));
+                const phone = (record.phone_number || record.phone || '').replace(/\D/g, '');
+                const contentKey = `${name}|${address}|${phone}`;
+                
+                // Verificar se tem dados mínimos válidos
+                const hasValidName = record.name && record.name.trim().length > 2;
+                const hasValidAddress = (record.fulladdr && record.fulladdr.trim().length > 5) || 
+                                      (record.address && record.address.trim().length > 5);
+                
+                // Só adicionar se for válido e único
+                if ((hasValidName || hasValidAddress) && contentKey !== '||' && !contentKeyMap.has(contentKey)) {
+                    contentKeyMap.set(contentKey, true);
+                    uniqueRecords[uuid] = record;
+                }
+            }
+            
+            // Converter objetos para array de dados
+            const dataArray = Object.values(uniqueRecords)
+                .map((record, index) => {
                 // Função para extrair telefone de diferentes campos (APENAS CELULARES)
                 const extractPhone = (record) => {
                     // Tentar diferentes campos de telefone primeiro
@@ -250,11 +260,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     return address.trim();
                 };
                 
+                // Extrair dados
+                const extractedPhone = extractPhone(record);
+                const extractedAddress = extractAddress(record);
+                const extractedName = (record.name || '').trim();
+                
                 return {
-                    'Nome': record.name || '',
-                    'Telefone': extractPhone(record),
+                    'Nº': index + 1, // Adicionar numeração
+                    'Nome': extractedName,
+                    'Telefone': extractedPhone,
                     'Categoria': record.primary_category || (record.categories && record.categories[0]) || '',
-                    'Endereço': extractAddress(record),
+                    'Endereço': extractedAddress,
                     'Website': record.url || record.website || '',
                     'Avaliação': record.rating || '',
                     'Avaliações': record.reviews || '',
@@ -264,9 +280,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     'URL da Listagem': record.listing_url || '',
                     'Reivindicado': record.claimed || '',
                     'Data de Coleta': new Date(record.created_at).toLocaleDateString('pt-BR'),
-                    'Query de Busca': record.query || '',
-                    'UUID': record.uuid || ''
+                    'Query de Busca': record.query || ''
                 };
+            })
+            .filter(row => {
+                // Filtrar linhas completamente vazias (sem nome e sem endereço válidos)
+                const hasValidData = (row.Nome && row.Nome.length > 2) || (row.Endereço && row.Endereço.length > 5);
+                return hasValidData;
             });
             
             // Verificar se a biblioteca XLSX está disponível
@@ -276,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Ajustar largura das colunas
                 const columnWidths = [
+                    { wch: 6 },  // Nº
                     { wch: 30 }, // Nome
                     { wch: 20 }, // Telefone
                     { wch: 20 }, // Categoria
@@ -289,8 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     { wch: 40 }, // URL da Listagem
                     { wch: 12 }, // Reivindicado
                     { wch: 15 }, // Data de Coleta
-                    { wch: 30 }, // Query de Busca
-                    { wch: 25 }  // UUID
+                    { wch: 30 }  // Query de Busca
                 ];
                 worksheet['!cols'] = columnWidths;
                 
@@ -442,16 +462,26 @@ ${extractedPhone ? '✅ Celular extraído com sucesso!' : '❌ Celular não enco
             
             const originalCount = Object.keys(records).length;
             const uniqueRecords = {};
+            const contentKeyMap = new Map();
             const duplicates = [];
             
             // Processar cada registro
-            for (const [key, record] of Object.entries(records)) {
-                // Criar uma chave única baseada no conteúdo
-                const contentKey = `${record.name || ''}_${record.fulladdr || record.address || ''}_${record.phone_number || record.phone || ''}`.toLowerCase().trim();
+            for (const [uuid, record] of Object.entries(records)) {
+                // Criar uma chave única baseada no conteúdo normalizado
+                const name = (record.name || '').toLowerCase().trim().replace(/\s+/g, ' ');
+                const address = ((record.fulladdr || record.address || '').toLowerCase().trim().replace(/\s+/g, ' '));
+                const phone = (record.phone_number || record.phone || '').replace(/\D/g, ''); // Remove formatação
+                const contentKey = `${name}|${address}|${phone}`;
                 
-                if (contentKey && contentKey !== '_') {
-                    if (!uniqueRecords[contentKey]) {
-                        uniqueRecords[contentKey] = record;
+                // Verificar se tem dados mínimos válidos
+                const hasValidName = record.name && record.name.trim().length > 2;
+                const hasValidAddress = (record.fulladdr && record.fulladdr.trim().length > 5) || 
+                                      (record.address && record.address.trim().length > 5);
+                
+                if (contentKey && contentKey !== '||' && (hasValidName || hasValidAddress)) {
+                    if (!contentKeyMap.has(contentKey)) {
+                        contentKeyMap.set(contentKey, true);
+                        uniqueRecords[uuid] = record;
                     } else {
                         duplicates.push(record.name || 'Sem nome');
                     }

@@ -15,14 +15,19 @@ function isValidProfile(profile) {
     return hasValidName || hasValidAddress;
 }
 
-// Função para gerar UUID único baseado no conteúdo
+// Função para gerar chave única baseada no conteúdo (para detecção de duplicatas)
+function generateContentKey(profile) {
+    const name = (profile.name || '').toLowerCase().trim().replace(/\s+/g, ' ');
+    const address = ((profile.fulladdr || profile.address || '').toLowerCase().trim().replace(/\s+/g, ' '));
+    const phone = (profile.phone_number || profile.phone || '').replace(/\D/g, ''); // Remove formatação
+    
+    // Criar chave única baseada em nome, endereço e telefone
+    return `${name}|${address}|${phone}`;
+}
+
+// Função para gerar UUID único
 function generateUniqueId(profile) {
-    const content = `${profile.name || ''}_${profile.fulladdr || profile.address || ''}_${profile.phone_number || profile.phone || ''}`;
-    const hash = content.split('').reduce((a, b) => {
-        a = ((a << 5) - a) + b.charCodeAt(0);
-        return a & a;
-    }, 0);
-    return `profile_${Math.abs(hash)}_${Date.now()}`;
+    return `profile_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
 // Função para salvar novos perfis encontrados
@@ -37,6 +42,15 @@ async function saveNewProfiles(profiles) {
             let duplicatesCount = 0;
             let invalidCount = 0;
             
+            // Criar mapa de conteúdo existente para detecção rápida de duplicatas
+            const existingContentMap = new Map();
+            for (const record of Object.values(existingRecords)) {
+                const contentKey = generateContentKey(record);
+                if (contentKey && contentKey !== '||') {
+                    existingContentMap.set(contentKey, true);
+                }
+            }
+            
             for (const [key, profile] of Object.entries(profiles)) {
                 // Validar se o perfil tem dados úteis
                 if (!isValidProfile(profile)) {
@@ -44,23 +58,22 @@ async function saveNewProfiles(profiles) {
                     continue;
                 }
                 
-                // Gerar UUID único baseado no conteúdo
-                const uniqueId = generateUniqueId(profile);
-                
                 // Verificar se já existe um perfil com dados similares
-                const isDuplicate = Object.values(existingRecords).some(existing => {
-                    const existingContent = `${existing.name || ''}_${existing.fulladdr || existing.address || ''}_${existing.phone_number || existing.phone || ''}`;
-                    const newContent = `${profile.name || ''}_${profile.fulladdr || profile.address || ''}_${profile.phone_number || profile.phone || ''}`;
-                    return existingContent === newContent && existingContent.trim() !== '';
-                });
-                
-                if (isDuplicate) {
+                const contentKey = generateContentKey(profile);
+                if (contentKey && contentKey !== '||' && existingContentMap.has(contentKey)) {
                     duplicatesCount++;
                     continue;
                 }
                 
-                // Atualizar UUID único
+                // Gerar UUID único
+                const uniqueId = generateUniqueId(profile);
                 profile.uuid = uniqueId;
+                
+                // Adicionar ao mapa de conteúdo existente
+                if (contentKey && contentKey !== '||') {
+                    existingContentMap.set(contentKey, true);
+                }
+                
                 validProfiles[uniqueId] = profile;
             }
             

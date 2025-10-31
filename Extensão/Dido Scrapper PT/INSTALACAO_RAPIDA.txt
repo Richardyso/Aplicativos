@@ -55,5 +55,3 @@ Dido/
 ├── icons/icon-128.png
 ├── _locales/en/messages.json
 └── README.md
-
-🎉 DIVIRTA-SE EXTRAINDO LEADS!

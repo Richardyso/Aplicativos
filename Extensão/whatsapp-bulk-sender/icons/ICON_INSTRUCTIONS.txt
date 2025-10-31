@@ -1,0 +1,88 @@
+═══════════════════════════════════════════════════════════════
+  INSTRUÇÕES PARA CRIAR OS ÍCONES
+═══════════════════════════════════════════════════════════════
+
+Para criar os ícones da extensão, você precisa criar 3 arquivos PNG:
+
+1. icon16.png  (16x16 pixels)
+2. icon48.png  (48x48 pixels)
+3. icon128.png (128x128 pixels)
+
+═══════════════════════════════════════════════════════════════
+  DESIGN DO ÍCONE
+═══════════════════════════════════════════════════════════════
+
+O ícone deve representar:
+- Fundo: Gradiente verde (#128C7E -> #075E54)
+- Símbolo: Balões de conversa (chat bubbles) em branco
+- Estilo: Moderno, flat design, bordas arredondadas
+
+═══════════════════════════════════════════════════════════════
+  MÉTODO 1: Usar Ferramentas Online
+═══════════════════════════════════════════════════════════════
+
+1. Acesse: https://www.canva.com ou https://www.figma.com
+2. Crie um design quadrado (128x128)
+3. Use as cores: #128C7E (verde WhatsApp)
+4. Adicione ícone de mensagem/chat em branco
+5. Exporte em 3 tamanhos: 16x16, 48x48, 128x128
+6. Salve como PNG
+
+═══════════════════════════════════════════════════════════════
+  MÉTODO 2: Usar SVG (Temporário)
+═══════════════════════════════════════════════════════════════
+
+Enquanto não tem os PNGs, você pode:
+
+1. Criar icon.svg e converter para PNG depois
+2. Ou usar um ícone temporário de https://www.flaticon.com
+
+═══════════════════════════════════════════════════════════════
+  ALTERNATIVA RÁPIDA: Emoji
+═══════════════════════════════════════════════════════════════
+
+Se quiser testar rápido, pode usar um emoji convertido:
+- 💬 ou 📱 ou 💚
+
+Sites para converter emoji para PNG:
+- https://emojipng.com
+- https://emoji.gg
+
+═══════════════════════════════════════════════════════════════
+  CÓDIGO SVG DE REFERÊNCIA
+═══════════════════════════════════════════════════════════════
+
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#128C7E"/>
+      <stop offset="100%" style="stop-color:#075E54"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Fundo -->
+  <rect width="128" height="128" rx="24" fill="url(#bg)"/>
+  
+  <!-- Ícone de mensagem -->
+  <path d="M40 50 h48 a8 8 0 0 1 8 8 v20 a8 8 0 0 1 -8 8 h-32 l-16 12 v-12 a8 8 0 0 1 -8 -8 v-20 a8 8 0 0 1 8 -8 z" 
+        fill="white"/>
+  
+  <!-- Pontinhos -->
+  <circle cx="54" cy="68" r="3" fill="#128C7E"/>
+  <circle cx="64" cy="68" r="3" fill="#128C7E"/>
+  <circle cx="74" cy="68" r="3" fill="#128C7E"/>
+</svg>
+
+═══════════════════════════════════════════════════════════════
+  CONVERSÃO SVG → PNG
+═══════════════════════════════════════════════════════════════
+
+Ferramentas online:
+1. https://cloudconvert.com/svg-to-png
+2. https://svgtopng.com
+3. https://image.online-convert.com/convert-to-png
+
+Ou use GIMP/Photoshop/Inkscape para converter.
+
+═══════════════════════════════════════════════════════════════
+

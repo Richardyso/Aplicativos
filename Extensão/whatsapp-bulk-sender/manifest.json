@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Bulk Sender Pro",
+  "version": "1.0.0",
+  "description": "Envie mensagens em massa no WhatsApp Web com templates, agendamento e relatórios completos",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://web.whatsapp.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://web.whatsapp.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar/*", "icons/*", "assets/*"],
+      "matches": ["*://web.whatsapp.com/*"]
+    }
+  ]
+}
+
