@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvLocalName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POUSADA PARAÍSO"
+        android:textSize="32sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:paddingBottom="80dp"
+        android:background="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="80dp">
+
+            <Button
+                android:id="@+id/btnManutencaoPreventiva"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="@string/manutencao_preventiva"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_background"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp" />
+
+            <Button
+                android:id="@+id/btnManutencaoCorretiva"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="@string/manutencao_corretiva"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_background"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp" />
+
+            <Button
+                android:id="@+id/btnObservacao"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="@string/observacao"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_background"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Eletricarlos</string>
+    
+    <!-- Main Activity -->
+    <string name="livro_anotacoes">LIVRO DE ANOTAÇÕES</string>
+    <string name="pousada_paraiso">Pousada Paraíso</string>
+    <string name="dorys_prime">Dorys Prime</string>
+    <string name="hotel_jr">Hotel JR</string>
+    <string name="hotel_guarany">Hotel Guarany</string>
+    
+    <!-- Local Activity -->
+    <string name="manutencao_preventiva">Manutenção Preventiva</string>
+    <string name="manutencao_corretiva">Manutenção Corretiva</string>
+    <string name="observacao">Observação</string>
+    
+    <!-- Form Activity -->
+    <string name="numero">Nº</string>
+    <string name="data">Data</string>
+    <string name="salvar">Salvar</string>
+    <string name="adicionar">+</string>
+    <string name="remover">-</string>
+    
+    <!-- Login Activity -->
+    <string name="login_title">Login - Eletricarlos</string>
+    <string name="select_user">Selecione o usuário</string>
+    <string name="password">Senha</string>
+    <string name="btn_login">Entrar</string>
+    <string name="error_password">Senha incorreta</string>
+    <string name="error_select_user">Selecione um usuário</string>
+    <string name="view_only_mode">Modo Visualização</string>
+    <string name="btn_logout">Sair</string>
 </resources>

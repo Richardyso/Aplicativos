@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample data extraction rules file; uncomment and customize as necessary.
-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Regras de extração de dados para Android 12+ -->
 <data-extraction-rules>
-    <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
+        <!-- Permitir backup na nuvem apenas com criptografia -->
+        <include domain="sharedpref" path="eletricarlos_data.xml"/>
+        <include domain="sharedpref" path="eletricarlos_auth.xml"/>
+        
+        <!-- Excluir dados temporários -->
+        <exclude domain="file" path="temp/"/>
+        <exclude domain="cache" path="."/>
     </cloud-backup>
-    <!--
+    
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <!-- Permitir transferência segura entre dispositivos -->
+        <include domain="sharedpref" path="eletricarlos_data.xml"/>
+        <include domain="sharedpref" path="eletricarlos_auth.xml"/>
     </device-transfer>
-    -->
 </data-extraction-rules>

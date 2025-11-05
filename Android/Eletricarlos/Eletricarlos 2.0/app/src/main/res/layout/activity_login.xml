@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/tvLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="60dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_user"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="12dp" />
+
+    <Spinner
+        android:id="@+id/spinnerUser"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/btn_login"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@drawable/button_background" />
+
+</LinearLayout>
+
