@@ -1,0 +1,17 @@
+CONTRAUTO - Sistema de Geração de Propostas e Contratos
+
+COMO USAR:
+1. Execute o arquivo Contrauto.exe
+2. Escolha o tipo de documento (Proposta ou Contrato)
+3. Siga o assistente passo a passo
+4. Os documentos serão salvos na pasta "documentos_gerados"
+
+REQUISITOS:
+- Windows 7 ou superior
+- Não precisa instalar Python!
+
+PROBLEMAS COMUNS:
+- Se o antivírus bloquear, adicione uma exceção
+- Se aparecer "Windows protegeu seu PC", clique em "Mais informações" e depois "Executar mesmo assim"
+
+Desenvolvido com ❤️ por Contrauto Team

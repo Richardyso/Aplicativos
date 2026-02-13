@@ -1,0 +1,72 @@
+/* Estilos para o Profile Downloader */
+
+#tiktok-bulk-downloader {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#tiktok-download-progress {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#tiktok-bulk-downloader:active {
+    transform: scale(0.95) !important;
+}
+
+#tiktok-download-progress::-webkit-scrollbar {
+    width: 6px;
+}
+
+#tiktok-download-progress::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#tiktok-download-progress::-webkit-scrollbar-thumb {
+    background: #fe2c55;
+    border-radius: 10px;
+}
+
+#tiktok-download-progress::-webkit-scrollbar-thumb:hover {
+    background: #ff6b6b;
+}
+
+#video-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#video-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#video-list::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+
+#video-list::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
+

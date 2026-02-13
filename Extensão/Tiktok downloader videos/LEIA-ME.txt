@@ -1,0 +1,165 @@
+═══════════════════════════════════════════════════════════════
+  🎯 EXTENSÃO TIKTOK - DOWNLOAD EM LOTE DE PERFIS
+═══════════════════════════════════════════════════════════════
+
+✨ NOVIDADE: Agora você pode baixar TODOS os vídeos de um perfil 
+   do TikTok com apenas 1 clique!
+
+───────────────────────────────────────────────────────────────
+📚 DOCUMENTAÇÃO DISPONÍVEL
+───────────────────────────────────────────────────────────────
+
+┌─ Para Começar Rapidamente ─────────────────────────────────┐
+│                                                              │
+│  📄 GUIA_RAPIDO.md                                          │
+│     ↳ Instalação em 2 minutos                              │
+│     ↳ Como usar em 4 passos simples                        │
+│     ↳ FAQ e dicas práticas                                 │
+│                                                              │
+│  ⭐ COMECE POR AQUI! ⭐                                     │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ Documentação Completa ────────────────────────────────────┐
+│                                                              │
+│  📄 README_PROFILE_DOWNLOADER.md                            │
+│     ↳ Documentação técnica detalhada                       │
+│     ↳ Como funciona internamente                           │
+│     ↳ Limitações e observações                             │
+│     ↳ Solução de problemas                                 │
+│     ↳ Configurações avançadas                              │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ Para Desenvolvedores/Testadores ──────────────────────────┐
+│                                                              │
+│  📄 COMO_TESTAR.md                                          │
+│     ↳ Checklist completo de testes (11 fases)             │
+│     ↳ Casos de teste específicos                           │
+│     ↳ Como reportar bugs                                   │
+│     ↳ Formulário de validação                              │
+│                                                              │
+│  📄 RESUMO_MODIFICACOES.md                                  │
+│     ↳ Lista de todos os arquivos criados                   │
+│     ↳ O que foi modificado                                 │
+│     ↳ Estatísticas do projeto                              │
+│     ↳ Fluxo de trabalho técnico                            │
+│                                                              │
+│  📄 manifest.formatted.json                                 │
+│     ↳ Manifest.json formatado para leitura                 │
+│     ↳ Referência de estrutura                              │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────
+⚡ INSTALAÇÃO RÁPIDA
+───────────────────────────────────────────────────────────────
+
+1. Abra o Chrome/Edge
+2. Digite: chrome://extensions/
+3. Ative "Modo do desenvolvedor"
+4. Clique em "Recarregar" (se já tem a extensão)
+   OU "Carregar sem compactação" (instalação nova)
+5. Pronto!
+
+───────────────────────────────────────────────────────────────
+🎬 USO RÁPIDO
+───────────────────────────────────────────────────────────────
+
+1. Acesse um perfil do TikTok
+   Exemplo: https://www.tiktok.com/@nome_usuario
+
+2. Veja o botão aparecer no canto superior direito
+   "🔽 Baixar Todos os Vídeos"
+
+3. Clique e aguarde!
+
+4. Vídeos serão baixados automaticamente
+   (Veja o progresso no painel que aparece)
+
+───────────────────────────────────────────────────────────────
+✨ FUNCIONALIDADES
+───────────────────────────────────────────────────────────────
+
+✅ Download automático de todos os vídeos do perfil
+✅ Painel de progresso em tempo real
+✅ Scroll automático para coletar vídeos
+✅ Interface moderna e bonita
+✅ Totalmente em português (BR e PT)
+✅ Vídeos SEM marca d'água
+✅ Alta qualidade
+
+───────────────────────────────────────────────────────────────
+📂 ESTRUTURA DE ARQUIVOS
+───────────────────────────────────────────────────────────────
+
+downloader/
+│
+├── 📁 content-scripts/
+│   ├── profile-downloader.js     ← Novo! Script principal
+│   ├── profile-downloader.css    ← Novo! Estilos
+│   ├── button.js                 (original)
+│   ├── button.css                (original)
+│   └── shadow.js                 (original)
+│
+├── 📁 _locales/
+│   ├── pt_BR/
+│   │   └── messages.json         ← Modificado! +8 mensagens
+│   ├── pt_PT/
+│   │   └── messages.json         ← Modificado! +8 mensagens
+│   └── ... (outros idiomas)
+│
+├── 📄 manifest.json              ← Modificado! v2.0.5
+├── 📄 manifest.formatted.json    ← Novo! Versão legível
+│
+├── 📖 LEIA-ME.txt               ← Você está aqui!
+├── 📖 GUIA_RAPIDO.md            ← Novo! Comece aqui
+├── 📖 README_PROFILE_DOWNLOADER.md  ← Novo! Docs completas
+├── 📖 COMO_TESTAR.md            ← Novo! Testes
+└── 📖 RESUMO_MODIFICACOES.md    ← Novo! Detalhes técnicos
+
+───────────────────────────────────────────────────────────────
+🆚 DIFERENÇAS
+───────────────────────────────────────────────────────────────
+
+ANTES (v2.0.4):
+  • Download apenas de vídeos individuais
+  • Botão em cada vídeo ao passar o mouse
+  • 1 vídeo por vez
+
+AGORA (v2.0.5):
+  • Download individual (mantido) +
+  • Download em lote de perfil completo! (NOVO!)
+  • Botão fixo no perfil
+  • Todos os vídeos de uma vez
+
+───────────────────────────────────────────────────────────────
+⚠️ IMPORTANTE
+───────────────────────────────────────────────────────────────
+
+• Funciona apenas em perfis PÚBLICOS
+• Pode demorar em perfis grandes (tenha paciência)
+• Não feche a aba durante o download
+• Respeite direitos autorais!
+
+───────────────────────────────────────────────────────────────
+🐛 SUPORTE
+───────────────────────────────────────────────────────────────
+
+Email: simpdownapp@gmail.com
+Assunto: "Profile Downloader - [seu problema]"
+
+───────────────────────────────────────────────────────────────
+📊 VERSÃO
+───────────────────────────────────────────────────────────────
+
+Versão: 2.0.5
+Data: Novembro 2024
+Status: ✅ Pronto para uso
+
+───────────────────────────────────────────────────────────────
+
+🎉 APROVEITE A NOVA FUNCIONALIDADE! 🎉
+
+═══════════════════════════════════════════════════════════════
+

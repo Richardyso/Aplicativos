@@ -1,0 +1,126 @@
+PROPOSTA COMERCIAL
+
+{city}, {date_full}
+
+À
+{contractor_name}
+{contractor_address}
+{contractor_doc_type}: {contractor_doc}
+{?contractor_email:E-mail: {contractor_email}}
+{?contractor_phone:Telefone: {contractor_phone}}
+
+Ref.: Proposta Comercial - {service_title}
+
+Prezado(a) Cliente,
+
+É com grande satisfação que apresentamos nossa proposta comercial para prestação de serviços, conforme solicitado.
+
+1. APRESENTAÇÃO DA EMPRESA
+
+{contracted_name} é uma empresa especializada em {company_specialty}, com {company_experience} de experiência no mercado. Nossa missão é fornecer soluções de alta qualidade que atendam às necessidades específicas de cada cliente.
+
+{?company_description:{company_description}}
+
+2. OBJETIVO DA PROPOSTA
+
+Esta proposta tem como objetivo apresentar nossa solução para {service_title}, visando {service_objective}.
+
+3. DESCRIÇÃO DOS SERVIÇOS
+
+{service_description}
+
+4. ESCOPO DO TRABALHO
+
+O escopo dos serviços contempla:
+
+{service_scope}
+
+5. METODOLOGIA DE TRABALHO
+
+{?methodology:Nossa metodologia de trabalho inclui:
+{methodology}}
+
+6. ENTREGÁVEIS
+
+Ao final do projeto, serão entregues:
+
+{#deliverables:• {item}}
+
+7. CRONOGRAMA
+
+{?has_schedule:O projeto será desenvolvido conforme o seguinte cronograma:
+{schedule}}
+
+Prazo total de execução: {execution_deadline}
+
+8. INVESTIMENTO
+
+Valor total dos serviços: R$ {total_value} ({total_value_text})
+
+Forma de Pagamento: {payment_method}
+{payment_details}
+
+{?payment_observations:Observações sobre pagamento:
+{payment_observations}}
+
+9. CONDIÇÕES COMERCIAIS
+
+• Validade da proposta: {proposal_validity} dias
+• Os valores apresentados {?includes_taxes:incluem todos os impostos}{?!includes_taxes:não incluem impostos, que serão adicionados conforme legislação vigente}
+• O prazo de execução será contado a partir da aprovação formal desta proposta
+• Qualquer alteração no escopo poderá impactar nos valores e prazos apresentados
+
+{?additional_conditions:{additional_conditions}}
+
+10. GARANTIAS
+
+{?warranty:Oferecemos as seguintes garantias:
+{warranty}}
+
+11. CASOS DE SUCESSO
+
+{?success_cases:Alguns de nossos principais clientes e projetos realizados:
+{success_cases}}
+
+12. DIFERENCIAIS
+
+{?differentials:Nossos principais diferenciais:
+{differentials}}
+
+13. PRÓXIMOS PASSOS
+
+Para darmos continuidade ao projeto, seguem os próximos passos:
+
+1. Análise e aprovação desta proposta
+2. Assinatura do contrato de prestação de serviços
+3. {?requires_advance:Pagamento do valor de entrada}
+4. Início imediato das atividades
+
+14. CONSIDERAÇÕES FINAIS
+
+Agradecemos a oportunidade de apresentar esta proposta e nos colocamos à disposição para quaisquer esclarecimentos adicionais que se façam necessários.
+
+Estamos confiantes de que nossa experiência e comprometimento resultarão em uma parceria de sucesso.
+
+{?final_observations:{final_observations}}
+
+Atenciosamente,
+
+
+_________________________________
+{contracted_name}
+{contracted_doc_type}: {contracted_doc}
+{?contracted_email:E-mail: {contracted_email}}
+{?contracted_phone:Telefone: {contracted_phone}}
+{?contracted_website:Website: {contracted_website}}
+
+
+ACEITE DA PROPOSTA
+
+Ao assinar abaixo, o CONTRATANTE declara que leu, compreendeu e concorda com todos os termos desta proposta comercial.
+
+Data: ___/___/______
+
+_________________________________
+{contractor_name}
+{contractor_doc_type}: {contractor_doc}

@@ -1,0 +1,94 @@
+CONTRATO DE PRESTAÇÃO DE SERVIÇOS
+
+Pelo presente instrumento particular, de um lado:
+
+CONTRATANTE: {contractor_name}, {contractor_type}, inscrito(a) no {contractor_doc_type} sob o nº {contractor_doc}, com sede/endereço em {contractor_address}, doravante denominado simplesmente CONTRATANTE,
+
+E de outro lado:
+
+CONTRATADO: {contracted_name}, {contracted_type}, inscrito(a) no {contracted_doc_type} sob o nº {contracted_doc}, com sede/endereço em {contracted_address}, doravante denominado simplesmente CONTRATADO,
+
+Têm entre si justo e contratado o que segue:
+
+CLÁUSULA PRIMEIRA - DO OBJETO
+1.1. O presente contrato tem por objeto a prestação dos seguintes serviços:
+{contract_object}
+
+1.2. Os serviços serão executados conforme as especificações acordadas entre as partes.
+
+CLÁUSULA SEGUNDA - DO VALOR E FORMA DE PAGAMENTO
+2.1. Pelos serviços prestados, o CONTRATANTE pagará ao CONTRATADO o valor total de R$ {total_value} ({total_value_text}).
+
+2.2. O pagamento será realizado da seguinte forma:
+{payment_terms}
+
+2.3. {?payment_method=parcelado:Os pagamentos deverão ser efetuados até o dia {payment_due_day} de cada mês.}
+
+2.4. Em caso de atraso no pagamento, incidirá multa de 2% (dois por cento) sobre o valor devido, acrescido de juros de mora de 1% (um por cento) ao mês.
+
+CLÁUSULA TERCEIRA - DO PRAZO
+3.1. O presente contrato vigorará pelo período de {contract_duration}, iniciando-se em {start_date} e encerrando-se em {end_date}.
+
+3.2. {?renewable:O contrato poderá ser renovado automaticamente por iguais períodos, salvo manifestação contrária de qualquer das partes com antecedência mínima de 30 (trinta) dias.}
+
+CLÁUSULA QUARTA - DAS OBRIGAÇÕES DO CONTRATANTE
+4.1. São obrigações do CONTRATANTE:
+a) Efetuar o pagamento conforme estabelecido na Cláusula Segunda;
+b) Fornecer todas as informações necessárias para a execução dos serviços;
+c) Proporcionar as condições necessárias para que o CONTRATADO possa executar os serviços;
+{contractor_obligations}
+
+CLÁUSULA QUINTA - DAS OBRIGAÇÕES DO CONTRATADO
+5.1. São obrigações do CONTRATADO:
+a) Executar os serviços com zelo, diligência e economia;
+b) Manter sigilo sobre todas as informações fornecidas pelo CONTRATANTE;
+c) Cumprir os prazos estabelecidos;
+d) Emitir nota fiscal dos serviços prestados;
+{contracted_obligations}
+
+CLÁUSULA SEXTA - DA CONFIDENCIALIDADE
+6.1. As partes comprometem-se a manter sigilo sobre todas as informações confidenciais a que tiverem acesso em razão deste contrato, durante sua vigência e pelo prazo de 5 (cinco) anos após seu término.
+
+CLÁUSULA SÉTIMA - DA RESCISÃO
+7.1. O presente contrato poderá ser rescindido:
+a) Por acordo entre as partes;
+b) Por inadimplemento de qualquer cláusula contratual;
+c) Por impossibilidade de execução dos serviços;
+d) Nos demais casos previstos em lei.
+
+7.2. A parte que desejar rescindir o contrato deverá notificar a outra com antecedência mínima de 30 (trinta) dias.
+
+CLÁUSULA OITAVA - DAS PENALIDADES
+8.1. O descumprimento de qualquer cláusula deste contrato sujeitará a parte infratora ao pagamento de multa equivalente a 10% (dez por cento) do valor total do contrato, sem prejuízo da rescisão e de eventuais perdas e danos.
+
+CLÁUSULA NONA - DA NATUREZA DO CONTRATO
+9.1. O presente contrato não estabelece vínculo empregatício entre as partes, sendo o CONTRATADO responsável por todos os encargos trabalhistas, previdenciários e fiscais decorrentes da execução dos serviços.
+
+{additional_clauses}
+
+CLÁUSULA DÉCIMA - DAS DISPOSIÇÕES GERAIS
+10.1. Este contrato representa o acordo integral entre as partes, substituindo todos os entendimentos anteriores.
+
+10.2. Qualquer alteração deste contrato somente será válida se feita por escrito e assinada por ambas as partes.
+
+10.3. A tolerância de uma parte quanto ao descumprimento da outra não implicará renúncia aos direitos previstos neste contrato.
+
+CLÁUSULA DÉCIMA PRIMEIRA - DO FORO
+11.1. Fica eleito o foro da comarca de {city}, {state}, para dirimir quaisquer dúvidas ou controvérsias oriundas do presente contrato, renunciando as partes a qualquer outro, por mais privilegiado que seja.
+
+E por estarem assim justos e contratados, assinam o presente instrumento em 2 (duas) vias de igual teor e forma, na presença das testemunhas abaixo.
+
+{city}, {date_full}
+
+
+_________________________________          _________________________________
+{contractor_name}                          {contracted_name}
+CONTRATANTE                                CONTRATADO
+{contractor_doc_type}: {contractor_doc}    {contracted_doc_type}: {contracted_doc}
+
+
+TESTEMUNHAS:
+
+1. _________________________________       2. _________________________________
+   Nome:                                      Nome:
+   CPF:                                       CPF:

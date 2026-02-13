@@ -1,0 +1,91 @@
+CONTRATO DE PRESTAÇÃO DE SERVIÇOS
+
+Entre:
+
+PRIMEIRO OUTORGANTE: {contractor_name}, {contractor_type}, com o {contractor_doc_type} {contractor_doc}, com sede em {contractor_address}, adiante designado por CONTRATANTE,
+
+E
+
+SEGUNDO OUTORGANTE: {contracted_name}, {contracted_type}, com o {contracted_doc_type} {contracted_doc}, com sede em {contracted_address}, adiante designado por CONTRATADO,
+
+É celebrado o presente contrato de prestação de serviços, que se rege pelas cláusulas seguintes e pela legislação aplicável:
+
+CLÁUSULA PRIMEIRA - OBJECTO
+1. O presente contrato tem por objecto a prestação dos seguintes serviços:
+{contract_object}
+
+2. Os serviços serão executados de acordo com as especificações acordadas entre as partes.
+
+CLÁUSULA SEGUNDA - PREÇO E CONDIÇÕES DE PAGAMENTO
+1. Pelos serviços prestados, o CONTRATANTE pagará ao CONTRATADO o montante global de € {total_value} ({total_value_text}), acrescido de IVA à taxa legal em vigor.
+
+2. O pagamento será efectuado da seguinte forma:
+{payment_terms}
+
+3. {?payment_method=parcelado:Os pagamentos deverão ser efectuados até ao dia {payment_due_day} de cada mês.}
+
+4. Em caso de mora no pagamento, aos valores em dívida acrescerão juros de mora à taxa legal.
+
+CLÁUSULA TERCEIRA - PRAZO
+1. O presente contrato vigora pelo período de {contract_duration}, com início em {start_date} e término em {end_date}.
+
+2. {?renewable:O contrato renova-se automaticamente por períodos sucessivos de igual duração, salvo denúncia de qualquer das partes com a antecedência mínima de 30 (trinta) dias relativamente ao termo do período em curso.}
+
+CLÁUSULA QUARTA - OBRIGAÇÕES DO CONTRATANTE
+O CONTRATANTE obriga-se a:
+a) Efectuar o pagamento nos termos estabelecidos na Cláusula Segunda;
+b) Fornecer todas as informações necessárias à boa execução dos serviços;
+c) Proporcionar as condições necessárias para que o CONTRATADO possa executar os serviços objecto do contrato;
+{contractor_obligations}
+
+CLÁUSULA QUINTA - OBRIGAÇÕES DO CONTRATADO
+O CONTRATADO obriga-se a:
+a) Executar os serviços com a diligência e competência exigíveis;
+b) Guardar sigilo sobre todas as informações fornecidas pelo CONTRATANTE;
+c) Cumprir os prazos estabelecidos;
+d) Emitir factura pelos serviços prestados;
+{contracted_obligations}
+
+CLÁUSULA SEXTA - CONFIDENCIALIDADE
+1. As partes obrigam-se a manter confidencialidade sobre todas as informações a que tenham acesso no âmbito da execução do presente contrato.
+
+2. O dever de confidencialidade mantém-se durante a vigência do contrato e pelo período de 5 (cinco) anos após a sua cessação.
+
+CLÁUSULA SÉTIMA - RESOLUÇÃO
+1. O contrato pode ser resolvido:
+a) Por acordo das partes;
+b) Por incumprimento definitivo de qualquer obrigação contratual;
+c) Por impossibilidade superveniente de realização da prestação;
+d) Nos demais casos previstos na lei.
+
+2. A resolução deve ser comunicada à contraparte por carta registada com aviso de recepção, com a antecedência mínima de 30 (trinta) dias.
+
+CLÁUSULA OITAVA - PENALIDADES
+O incumprimento culposo de qualquer obrigação emergente do presente contrato confere à parte não faltosa o direito a ser indemnizada pelos danos causados, nos termos gerais de direito.
+
+CLÁUSULA NONA - NATUREZA DA RELAÇÃO
+1. O CONTRATADO executará os serviços em regime de prestação de serviços, não se estabelecendo qualquer relação de subordinação jurídica entre as partes.
+
+2. O CONTRATADO é responsável por todos os encargos fiscais e contribuições para a Segurança Social decorrentes da sua actividade.
+
+{additional_clauses}
+
+CLÁUSULA DÉCIMA - DISPOSIÇÕES FINAIS
+1. Qualquer alteração ao presente contrato só será válida se for reduzida a escrito e assinada por ambas as partes.
+
+2. A invalidade de qualquer cláusula não afecta a validade das restantes.
+
+3. As comunicações entre as partes devem ser efectuadas por escrito para as moradas indicadas no presente contrato.
+
+CLÁUSULA DÉCIMA PRIMEIRA - FORO COMPETENTE
+Para a resolução de todos os litígios emergentes do presente contrato fica estipulada a competência do Tribunal da Comarca de {city}, com expressa renúncia a qualquer outro.
+
+Feito em {city}, aos {date_full}, em dois exemplares de igual valor e conteúdo, ficando um exemplar na posse de cada uma das partes.
+
+
+O CONTRATANTE                              O CONTRATADO
+
+
+_________________________________          _________________________________
+{contractor_name}                          {contracted_name}
+{contractor_doc_type}: {contractor_doc}    {contracted_doc_type}: {contracted_doc}
