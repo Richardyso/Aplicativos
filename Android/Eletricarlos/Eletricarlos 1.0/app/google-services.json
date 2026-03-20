@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "797159136807",
+    "project_id": "eletricarlos",
+    "storage_bucket": "eletricarlos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797159136807:android:9a31dca980d046a0c6f802",
+        "android_client_info": {
+          "package_name": "com.example.eletricarlos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcFuFdbsdJpOXpYmLUVmMP3hUoLTlIVkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

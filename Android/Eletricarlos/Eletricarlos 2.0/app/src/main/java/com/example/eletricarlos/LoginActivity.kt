@@ -28,12 +28,10 @@ class LoginActivity : AppCompatActivity() {
         authManager = AuthManager(this)
         legacyMigration = LegacyDataMigration(this)
         
-        // Migrar dados automaticamente sem popup
         if (!legacyMigration.isMigrationCompleted()) {
             legacyMigration.migrateAllData()
         }
         
-        // Check if user is already logged in
         val session = authManager.getSession()
         if (session != null) {
             goToMainActivity()
@@ -44,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
         
-        // Setup spinner with usernames
         val usernames = authManager.getUsernames()
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, usernames)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -86,4 +83,3 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 }
-

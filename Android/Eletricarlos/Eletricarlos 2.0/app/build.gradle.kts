@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -11,8 +12,8 @@ android {
         applicationId = "com.example.eletricarlos"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2  // Incrementado para ser reconhecido como atualização
-        versionName = "2.0"  // Versão 2.0 do Eletricarlos
+        versionCode = 3  // Versão 3.0 - Firestore
+        versionName = "3.0"  // Versão 3.0 do Eletricarlos
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,8 +49,10 @@ android {
             isDebuggable = false
             isJniDebuggable = false
             
-            // IMPORTANTE: Descomente após configurar signingConfigs acima
-            // signingConfig = signingConfigs.getByName("release")
+            // Usa keystore release se configurada; senão usa debug (para build local)
+            signingConfig = signingConfigs.findByName("release")?.takeIf {
+                it.storeFile?.exists() == true
+            } ?: signingConfigs.getByName("debug")
         }
         
         debug {
@@ -106,6 +109,10 @@ dependencies {
     
     // Gson for JSON parsing (needed for legacy data migration)
     implementation("com.google.code.gson:gson:2.10.1")
+    
+    // Firebase Firestore
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

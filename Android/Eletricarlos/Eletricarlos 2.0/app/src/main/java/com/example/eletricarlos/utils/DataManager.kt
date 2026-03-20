@@ -1,112 +1,82 @@
 package com.example.eletricarlos.utils
 
-import android.content.Context
 import android.util.Log
 import com.example.eletricarlos.models.Entry
 import com.example.eletricarlos.models.FormData
-import org.json.JSONArray
-import org.json.JSONObject
-import java.io.File
+import com.google.firebase.firestore.FirebaseFirestore
 
-class DataManager(private val context: Context) {
+/**
+ * DataManager que usa Firestore como backend.
+ * Coleção: dados
+ * Documento: {localName}_{type}
+ * Campos: entries (array de {numero, data, observacao})
+ */
+class DataManager {
     
     private val TAG = "DataManager"
-    private val dataDir = File(context.filesDir, "eletricarlos_data")
-    
-    init {
-        // Criar diretório de dados se não existir
-        if (!dataDir.exists()) {
-            dataDir.mkdirs()
-        }
-    }
+    private val db = FirebaseFirestore.getInstance()
+    private val collectionName = "dados"
     
     /**
-     * Salva dados localmente em arquivo JSON
+     * Salva dados no Firestore (upload para o banco de dados)
      */
-    fun saveFormData(formData: FormData) {
-        val key = "${formData.localName}_${formData.type}"
-        val jsonFile = File(dataDir, "$key.json")
-        
-        try {
-            // Criar JSON com os dados fornecidos
-            val jsonObject = JSONObject()
-            jsonObject.put("localName", formData.localName)
-            jsonObject.put("type", formData.type)
-            
-            val entriesArray = JSONArray()
-            for (entry in formData.entries) {
-                val entryObject = JSONObject()
-                entryObject.put("numero", entry.numero)
-                entryObject.put("data", entry.data)
-                entryObject.put("observacao", entry.observacao)
-                entriesArray.put(entryObject)
-            }
-            jsonObject.put("entries", entriesArray)
-            
-            // Salvar em arquivo JSON
-            jsonFile.writeText(jsonObject.toString(2)) // Indentação para facilitar leitura
-            Log.d(TAG, "✓ Dados salvos em: ${jsonFile.name} (${formData.entries.size} entradas)")
-            
-        } catch (e: Exception) {
-            Log.e(TAG, "Erro ao salvar dados: ${e.message}")
-            e.printStackTrace()
-        }
-    }
-    
-    /**
-     * Carrega dados do arquivo JSON local
-     */
-    fun loadFormData(localName: String, type: String): FormData? {
-        val key = "${localName}_${type}"
-        val jsonFile = File(dataDir, "$key.json")
-        
-        if (!jsonFile.exists()) {
-            Log.d(TAG, "Arquivo não encontrado: ${jsonFile.name}")
-            return null
-        }
-        
-        try {
-            val jsonString = jsonFile.readText()
-            val jsonObject = JSONObject(jsonString)
-            
-            val formData = FormData(
-                localName = jsonObject.getString("localName"),
-                type = jsonObject.getString("type")
-            )
-            
-            val entriesArray = jsonObject.getJSONArray("entries")
-            for (i in 0 until entriesArray.length()) {
-                val entryObject = entriesArray.getJSONObject(i)
-                val entry = Entry(
-                    numero = entryObject.getString("numero"),
-                    data = entryObject.getString("data"),
-                    observacao = entryObject.getString("observacao")
+    fun saveFormData(formData: FormData, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        val docId = "${formData.localName}_${formData.type}"
+        val data = hashMapOf(
+            "entries" to formData.entries.map { entry ->
+                hashMapOf(
+                    "numero" to entry.numero,
+                    "data" to entry.data,
+                    "observacao" to entry.observacao
                 )
-                formData.entries.add(entry)
             }
-            
-            Log.d(TAG, "✓ Dados carregados: ${jsonFile.name} (${formData.entries.size} entradas)")
-            return formData
-            
-        } catch (e: Exception) {
-            Log.e(TAG, "Erro ao carregar dados: ${e.message}")
-            return null
-        }
+        )
+        
+        db.collection(collectionName).document(docId)
+            .set(data)
+            .addOnSuccessListener {
+                Log.d(TAG, "✓ Dados salvos no Firestore: $docId (${formData.entries.size} entradas)")
+                onSuccess()
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Erro ao salvar no Firestore: ${e.message}")
+                onError(e.message ?: "Erro ao salvar")
+            }
     }
     
     /**
-     * Lista todos os arquivos de dados salvos
+     * Carrega dados do Firestore
      */
-    fun listAllData(): List<String> {
-        val files = dataDir.listFiles { file -> file.extension == "json" }
-        return files?.map { it.nameWithoutExtension } ?: emptyList()
-    }
-    
-    /**
-     * Obtém o diretório onde os dados são salvos
-     */
-    fun getDataDirectory(): File {
-        return dataDir
+    fun loadFormData(localName: String, type: String, onResult: (FormData?) -> Unit) {
+        val docId = "${localName}_${type}"
+        
+        db.collection(collectionName).document(docId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val formData = FormData(localName, type)
+                    @Suppress("UNCHECKED_CAST")
+                    val entriesList = document.get("entries") as? List<Map<String, Any>>
+                    
+                    entriesList?.forEach { entryMap ->
+                        val entry = Entry(
+                            numero = (entryMap["numero"] as? String) ?: "",
+                            data = (entryMap["data"] as? String) ?: "",
+                            observacao = (entryMap["observacao"] as? String) ?: ""
+                        )
+                        formData.entries.add(entry)
+                    }
+                    
+                    Log.d(TAG, "✓ Dados carregados do Firestore: $docId (${formData.entries.size} entradas)")
+                    onResult(formData)
+                } else {
+                    Log.d(TAG, "Documento não encontrado: $docId")
+                    onResult(null)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Erro ao carregar do Firestore: ${e.message}")
+                onResult(null)
+            }
     }
 }
-

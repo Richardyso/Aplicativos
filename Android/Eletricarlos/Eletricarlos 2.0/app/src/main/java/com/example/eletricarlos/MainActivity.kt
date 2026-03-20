@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.eletricarlos.utils.AuthManager
+import com.example.eletricarlos.utils.LegacyDataMigration
 
 class MainActivity : AppCompatActivity() {
     
@@ -20,7 +21,12 @@ class MainActivity : AppCompatActivity() {
         
         authManager = AuthManager(this)
         
-        // Check if user is logged in
+        LegacyDataMigration(this).run {
+            if (!isMigrationCompleted()) {
+                migrateAllData()
+            }
+        }
+        
         val session = authManager.getSession()
         if (session == null) {
             goToLogin()
@@ -35,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         val btnHotelGuarany = findViewById<Button>(R.id.btnHotelGuarany)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         
-        // Filter buttons based on user permissions
         val allowedLocations = session.allowedLocations
         
         btnPousadaParaiso.visibility = if (allowedLocations.contains("Pousada Paraíso")) View.VISIBLE else View.GONE
@@ -82,4 +87,3 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
-

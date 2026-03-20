@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Configurações de backup seguro para Eletricarlos -->
+<!-- Autenticação em SharedPreferences; dados do app no Firestore -->
 <full-backup-content>
-    <!-- Incluir SharedPreferences com dados do usuário -->
-    <include domain="sharedpref" path="eletricarlos_data.xml"/>
-    <include domain="sharedpref" path="eletricarlos_auth.xml"/>
-    
-    <!-- Excluir dados sensíveis temporários -->
-    <exclude domain="file" path="temp/"/>
-    <exclude domain="cache" path="."/>
-    <exclude domain="external" path="."/>
+    <include domain="sharedpref" path="eletricarlos_auth"/>
 </full-backup-content>

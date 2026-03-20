@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Regras de extração de dados para Android 12+ -->
+<!-- Autenticação em SharedPreferences; dados no Firestore -->
 <data-extraction-rules>
     <cloud-backup disableIfNoEncryptionCapabilities="true">
-        <!-- Permitir backup na nuvem apenas com criptografia -->
-        <include domain="sharedpref" path="eletricarlos_data.xml"/>
-        <include domain="sharedpref" path="eletricarlos_auth.xml"/>
-        
-        <!-- Excluir dados temporários -->
-        <exclude domain="file" path="temp/"/>
-        <exclude domain="cache" path="."/>
+        <include domain="sharedpref" path="eletricarlos_auth"/>
     </cloud-backup>
     
     <device-transfer>
-        <!-- Permitir transferência segura entre dispositivos -->
-        <include domain="sharedpref" path="eletricarlos_data.xml"/>
-        <include domain="sharedpref" path="eletricarlos_auth.xml"/>
+        <include domain="sharedpref" path="eletricarlos_auth"/>
     </device-transfer>
 </data-extraction-rules>

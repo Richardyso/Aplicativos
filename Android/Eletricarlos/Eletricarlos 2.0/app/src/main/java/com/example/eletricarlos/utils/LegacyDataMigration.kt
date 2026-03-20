@@ -6,9 +6,11 @@ import com.example.eletricarlos.models.Entry
 import com.example.eletricarlos.models.FormData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.File
 
 /**
- * Classe responsável por migrar dados do aplicativo antigo (v1.0) para o novo (v2.0)
+ * Classe responsável por migrar dados do aplicativo antigo (v1.0) para o Firestore.
+ * Usa arquivo para flag de migração (sem SharedPreferences para dados do app).
  * 
  * Mapeamento:
  * App Antigo -> App Novo
@@ -24,7 +26,7 @@ import com.google.gson.reflect.TypeToken
  */
 class LegacyDataMigration(private val context: Context) {
     
-    private val legacyPrefs = context.getSharedPreferences("legacy_migration", Context.MODE_PRIVATE)
+    private val migrationFlagFile = File(context.filesDir, "migration_completed.flag")
     private val gson = Gson()
     
     // Estrutura de dados antiga
@@ -50,17 +52,17 @@ class LegacyDataMigration(private val context: Context) {
     )
     
     /**
-     * Verifica se a migração já foi executada
+     * Verifica se a migração já foi executada (usa arquivo, não SharedPreferences)
      */
     fun isMigrationCompleted(): Boolean {
-        return legacyPrefs.getBoolean("migration_completed", false)
+        return migrationFlagFile.exists()
     }
     
     /**
      * Marca a migração como completa
      */
     private fun markMigrationCompleted() {
-        legacyPrefs.edit().putBoolean("migration_completed", true).apply()
+        migrationFlagFile.writeText("done")
     }
     
     /**
@@ -119,11 +121,12 @@ class LegacyDataMigration(private val context: Context) {
                 )
             }
             
-            // Salvar no novo formato usando DataManager
-            val dataManager = DataManager(context)
+            // Salvar no Firestore (v3.0)
+            val dataManager = DataManager()
             val formData = FormData(newLocalName, newType)
             formData.entries.addAll(newEntries)
-            dataManager.saveFormData(formData) // Salva localmente em JSON
+            // Upload assíncrono - não bloqueia
+            dataManager.saveFormData(formData, { }, { })
             
             return true
         } catch (e: Exception) {

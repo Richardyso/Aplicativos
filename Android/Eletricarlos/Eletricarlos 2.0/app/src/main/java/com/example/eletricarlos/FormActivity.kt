@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.eletricarlos.models.Entry
@@ -33,13 +34,13 @@ class FormActivity : AppCompatActivity() {
         canEdit = intent.getBooleanExtra("CAN_EDIT", false)
         
         containerEntries = findViewById(R.id.containerEntries)
-        dataManager = DataManager(this)
+        dataManager = DataManager()
         
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         val btnRemove = findViewById<Button>(R.id.btnRemove)
         val btnSave = findViewById<Button>(R.id.btnSave)
         
-        // Load saved data or initialize with 1 empty entry
+        // Carregar dados do Firestore (assíncrono)
         loadData()
         
         // Configure buttons based on edit permissions
@@ -68,17 +69,26 @@ class FormActivity : AppCompatActivity() {
     }
     
     private fun loadData() {
-        val savedData = dataManager.loadFormData(localName, type)
-        
-        if (savedData != null && savedData.entries.isNotEmpty()) {
-            // Load saved entries
-            for (entry in savedData.entries) {
-                addEntry(entry)
+        showLoading(true)
+        dataManager.loadFormData(localName, type) { savedData ->
+            runOnUiThread {
+                showLoading(false)
+                containerEntries.removeAllViews()
+                if (savedData != null && savedData.entries.isNotEmpty()) {
+                    for (entry in savedData.entries) {
+                        addEntry(entry)
+                    }
+                } else {
+                    addEntry()
+                }
             }
-        } else {
-            // Initialize with 1 empty entry
-            addEntry()
         }
+    }
+    
+    private fun showLoading(show: Boolean) {
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar?.visibility = if (show) View.VISIBLE else View.GONE
+        containerEntries.alpha = if (show) 0.5f else 1f
     }
     
     private fun addEntry(entry: Entry? = null) {
@@ -145,7 +155,6 @@ class FormActivity : AppCompatActivity() {
     private fun saveData() {
         val formData = FormData(localName, type)
         
-        // Collect data from all entry views (incluindo vazias)
         for (i in 0 until containerEntries.childCount) {
             val entryView = containerEntries.getChildAt(i)
             val etNumero = entryView.findViewById<EditText>(R.id.etNumero)
@@ -160,10 +169,26 @@ class FormActivity : AppCompatActivity() {
             formData.entries.add(entry)
         }
         
-        // Salvar sempre, mesmo com entradas vazias
-        dataManager.saveFormData(formData)
-        Toast.makeText(this, "Dados salvos com sucesso!", Toast.LENGTH_SHORT).show()
-        // Don't finish - stay on the form
+        val btnSave = findViewById<Button>(R.id.btnSave)
+        btnSave.isEnabled = false
+        btnSave.text = "Salvando..."
+        
+        dataManager.saveFormData(formData,
+            onSuccess = {
+                runOnUiThread {
+                    btnSave.isEnabled = true
+                    btnSave.text = getString(R.string.salvar)
+                    Toast.makeText(this, "Dados salvos no banco de dados!", Toast.LENGTH_SHORT).show()
+                }
+            },
+            onError = { error ->
+                runOnUiThread {
+                    btnSave.isEnabled = true
+                    btnSave.text = getString(R.string.salvar)
+                    Toast.makeText(this, "Erro ao salvar: $error", Toast.LENGTH_LONG).show()
+                }
+            }
+        )
     }
 }
 

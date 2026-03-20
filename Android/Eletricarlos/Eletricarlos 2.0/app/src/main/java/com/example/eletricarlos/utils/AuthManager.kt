@@ -4,11 +4,14 @@ import android.content.Context
 import com.example.eletricarlos.models.User
 import com.example.eletricarlos.models.UserSession
 
+/**
+ * Gerencia autenticação - sessão salva em SharedPreferences.
+ * Dados do app (entradas) ficam apenas no Firestore.
+ */
 class AuthManager(private val context: Context) {
     
     private val prefs = context.getSharedPreferences("eletricarlos_auth", Context.MODE_PRIVATE)
     
-    // Lista de usuários do sistema
     private val users = listOf(
         User(
             username = "Carlos",
@@ -76,4 +79,3 @@ class AuthManager(private val context: Context) {
         return users.map { it.username }
     }
 }
-
